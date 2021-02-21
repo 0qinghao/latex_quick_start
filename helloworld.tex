@@ -1,0 +1,104 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\begin{document}
+
+\tableofcontents
+
+\newpage
+\section{练习}
+Hello World !
+% paragraph 和 subparagraph 几乎不用
+
+special characters: \$ \% \& \#
+
+Chinese characters: 林，中、日、韩字符。
+
+\subsection{两种列表}
+列表的关键字：itemize 和 enumerate。
+\subsubsection{无序列表}
+\begin{itemize}
+    \item 无序列表1
+    \item 无序2
+    \item itemize
+\end{itemize}
+\subsubsection{有序列表}
+\begin{enumerate}
+    \item 有序列表1
+    \item 有序2
+    \item enumerate
+\end{enumerate}
+
+\newpage
+\section{正文}
+正文从这里\footnote{\label{fntest}Hello footnote}开始。测试引用 \ref{fntest} 效果。
+
+\newpage
+\section{表格}
+默认表格测试。
+\begin{table}[htb]
+    \centering
+    \caption{期望值}
+    \label{tab:E}
+    \begin{tabular}{c|c||c}
+        % c l r 表示对齐方式
+        1 & 2 & 3\\
+        \hline
+        a & b & c\\
+    \end{tabular}
+\end{table}
+
+\newpage
+\section{图像}
+默认图像添加，需要宏包 graphicx。
+\begin{figure}[htb]
+    \centering
+    \caption{分布情况}
+    \includegraphics[width=5 cm]{test.jpg}
+    \label{fig:dist}
+\end{figure}
+
+图 \ref{fig:dist} 展示了分布情况。
+
+\newpage
+\section{插入代码}
+似乎不需要另外包含宏包。
+\begin{verbatim}
+import util.*
+function foo = myFun(a, b, c)
+    if a == '{' || a == '['
+        N = norm(a .* b - c)
+        % REMOVE ADDITIONAL SPACES
+        foo = -N * a(3) / N
+        p = foo^N - 17
+        r = 42/0.8e15
+        d = 4.7e11
+        neg = -r
+    end
+
+    try something; catch e; end
+
+    for k = 1:N
+        % ADD INDENTATION AFTER LINE BREAK
+        k++
+
+        t = a * k ...
+            + b .* k^2 ... % comment
+            + c * k^3
+        vectorofstrings = ['α' 'β' 'γ'];
+        vectorofstrings = ['α', 'β', 'γ'];
+        vectorofstuff = ['foo' -dead('beef', 3.14, bar) -foo('bar', '42')]
+
+        if (norm(t))% ADD NEWLINE BEFORE AND AFTER BLOCK
+            fprintf('Hello world \n');
+        end
+    end
+end
+\end{verbatim}
+
+用 listings 宏包似乎可以更轻松地处理插入代码的工作，暂时应该不会用到插入代码的功能，暂时不深入学习。
+
+\input{helloworldpart2}
+\input{helloworldpart3}
+
+\end{document}
